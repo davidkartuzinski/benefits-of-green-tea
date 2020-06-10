@@ -3,7 +3,7 @@ import Directory from '../../components/directory/directory.component';
 
 import { HomePageContainer } from './homepage.styles.jsx';
 
-const HomePage = ({ history }) => {
+const HomePage = () => {
   return (
     <HomePageContainer>
       <Directory />
