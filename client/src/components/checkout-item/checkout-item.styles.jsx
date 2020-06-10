@@ -8,35 +8,38 @@ export const CheckoutItemContainer = styled.div`
   padding: 15px 0;
   font-size: 20px;
   align-items: center;
+  @media screen and (max-width: 800px) {
+    font-size: 18px;
+  }
 `;
 
 export const ImageContainer = styled.div`
   width: 23%;
   padding-right: 15px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
-export const CheckoutItemImage = styled.img`
-  width: 100%;
-  height: 100%;
-`;
-
-export const CheckoutItemSpan = styled.span`
+export const TextContainer = styled.span`
   width: 23%;
+  @media screen and (max-width: 800px) {
+    width: 22%;
+  }
 `;
 
-export const CheckoutItemQuantity = styled(CheckoutItemSpan)`
+export const QuantityContainer = styled(TextContainer)`
   display: flex;
+  span {
+    margin: 0 10px;
+  }
+  div {
+    cursor: pointer;
+  }
 `;
 
-export const CheckoutItemArrow = styled.div`
-  cursor: pointer;
-`;
-
-export const CheckoutItemValue = styled.div`
-  margin: 0 10px;
-`;
-
-export const RemoveButton = styled.div`
+export const RemoveButtonContainer = styled.div`
   padding-left: 12px;
   cursor: pointer;
 `;

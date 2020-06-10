@@ -10,42 +10,36 @@ import {
 import {
   CheckoutItemContainer,
   ImageContainer,
-  CheckoutItemImage,
-  CheckoutItemSpan,
-  CheckoutItemQuantity,
-  CheckoutItemArrow,
-  CheckoutItemValue,
-  RemoveButton,
-} from './checkout-item.styles.jsx';
+  TextContainer,
+  QuantityContainer,
+  RemoveButtonContainer,
+} from './checkout-item.styles';
 
 const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
-
   return (
     <CheckoutItemContainer>
       <ImageContainer>
-        <CheckoutItemImage src={imageUrl} alt='cart item' />
+        <img src={imageUrl} alt='item' />
       </ImageContainer>
-      <CheckoutItemSpan>{name}</CheckoutItemSpan>
-      <CheckoutItemQuantity>
-        <CheckoutItemArrow onClick={() => removeItem(cartItem)}>
-          &#10094;
-        </CheckoutItemArrow>
-        <CheckoutItemValue>{quantity}</CheckoutItemValue>
-        <CheckoutItemArrow onClick={() => addItem(cartItem)}>
-          &#10095;
-        </CheckoutItemArrow>
-      </CheckoutItemQuantity>
-      <CheckoutItemSpan className='price'>{price}</CheckoutItemSpan>
-      <RemoveButton onClick={() => clearItem(cartItem)}>&#10005;</RemoveButton>
+      <TextContainer>{name}</TextContainer>
+      <QuantityContainer>
+        <div onClick={() => removeItem(cartItem)}>&#10094;</div>
+        <span>{quantity}</span>
+        <div onClick={() => addItem(cartItem)}>&#10095;</div>
+      </QuantityContainer>
+      <TextContainer>{price}</TextContainer>
+      <RemoveButtonContainer onClick={() => clearItem(cartItem)}>
+        &#10005;
+      </RemoveButtonContainer>
     </CheckoutItemContainer>
   );
 };
 
-const mapStateToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   clearItem: (item) => dispatch(clearItemFromCart(item)),
   addItem: (item) => dispatch(addItem(item)),
   removeItem: (item) => dispatch(removeItem(item)),
 });
 
-export default connect(null, mapStateToProps)(CheckoutItem);
+export default connect(null, mapDispatchToProps)(CheckoutItem);
